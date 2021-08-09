@@ -33,7 +33,7 @@ main(int argc, char *argv[])
     xfnd = 0;
     pstr = NULL;
 
-    while ((opt = getopt(argc, argv, ":p:x")) != -1) {
+    while ((opt = getopt(argc, argv, "p:x")) != -1) {
         printf("opt =%3d (%c); optind = %d", opt, printable(opt), optind);
         if (opt == '?' || opt == ':')
             printf("; optopt =%3d (%c)", optopt, printable(optopt));
