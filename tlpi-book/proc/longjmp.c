@@ -24,15 +24,25 @@ f2(void)
 static void
 f1(int argc)
 {
+	printf("argc: %d", argc);
     if (argc == 1)
+	{
+		printf("long jmp!");
         longjmp(env, 1);
+	}
     f2();
+}
+
+int _setjump(jmp_buf env){
+	int a = 0;
+	printf("inside setjump");
+	return	setjmp(env);
 }
 
 int
 main(int argc, char *argv[])
 {
-    switch (setjmp(env)) {
+    switch (_setjump(env)) {
     case 0:     /* This is the return after the initial setjmp() */
         printf("Calling f1() after initial setjmp()\n");
         f1(argc);               /* Never returns... */
